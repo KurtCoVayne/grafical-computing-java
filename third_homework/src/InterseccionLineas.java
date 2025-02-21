@@ -1,18 +1,6 @@
 import java.util.*;
 
-class Puntos2 {
-    double x, y;
-
-    public Puntos2() {
-        this.x = 0;
-        this.y = 0;
-    }
-
-    public Puntos2(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
+public class InterseccionLineas {
     public static double orient(Puntos2 a, Puntos2 b, Puntos2 p) {
         return (b.x - a.x) * (p.y - a.y) - (b.y - a.y) * (p.x - a.x);
     }
@@ -56,16 +44,13 @@ class Puntos2 {
 
         return intersecciones;
     }
-}
-
-public class InterseccionLineas {
     public static void main(String[] args) {
         Puntos2 a = new Puntos2(1, 1);
         Puntos2 b = new Puntos2(4, 4);
         Puntos2 c = new Puntos2(1, 4);
         Puntos2 d = new Puntos2(4, 1);
 
-        List<Puntos2> intersecciones = Puntos2.inters(a, b, c, d);
+        List<Puntos2> intersecciones = inters(a, b, c, d);
         System.out.println("Interseccion:");
         for (Puntos2 p : intersecciones) {
             System.out.println(p.x + " " + p.y);
