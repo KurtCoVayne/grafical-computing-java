@@ -1,31 +1,31 @@
 import java.util.*;
 
-class Puntos {
+class Puntos2 {
     double x, y;
 
-    public Puntos() {
+    public Puntos2() {
         this.x = 0;
         this.y = 0;
     }
 
-    public Puntos(double x, double y) {
+    public Puntos2(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public static double orient(Puntos a, Puntos b, Puntos p) {
+    public static double orient(Puntos2 a, Puntos2 b, Puntos2 p) {
         return (b.x - a.x) * (p.y - a.y) - (b.y - a.y) * (p.x - a.x);
     }
 
-    public static boolean inDisk(Puntos a, Puntos b, Puntos p) {
+    public static boolean inDisk(Puntos2 a, Puntos2 b, Puntos2 p) {
         return (p.x - a.x) * (p.x - b.x) + (p.y - a.y) * (p.y - b.y) <= 0;
     }
 
-    public static boolean onSegment(Puntos a, Puntos b, Puntos p) {
+    public static boolean onSegment(Puntos2 a, Puntos2 b, Puntos2 p) {
         return orient(a, b, p) == 0 && inDisk(a, b, p);
     }
 
-    public static boolean properInter(Puntos a, Puntos b, Puntos c, Puntos d, Puntos out) {
+    public static boolean properInter(Puntos2 a, Puntos2 b, Puntos2 c, Puntos2 d, Puntos2 out) {
         double oa = orient(c, d, a);
         double ob = orient(c, d, b);
         double oc = orient(a, b, c);
@@ -40,9 +40,9 @@ class Puntos {
         return false;
     }
 
-    public static List<Puntos> inters(Puntos a, Puntos b, Puntos c, Puntos d) {
-        List<Puntos> intersecciones = new ArrayList<>();
-        Puntos out = new Puntos();
+    public static List<Puntos2> inters(Puntos2 a, Puntos2 b, Puntos2 c, Puntos2 d) {
+        List<Puntos2> intersecciones = new ArrayList<>();
+        Puntos2 out = new Puntos2();
         
         if (properInter(a, b, c, d, out)) {
             intersecciones.add(out);
@@ -60,14 +60,14 @@ class Puntos {
 
 public class InterseccionLineas {
     public static void main(String[] args) {
-        Puntos a = new Puntos(1, 1);
-        Puntos b = new Puntos(4, 4);
-        Puntos c = new Puntos(1, 4);
-        Puntos d = new Puntos(4, 1);
+        Puntos2 a = new Puntos2(1, 1);
+        Puntos2 b = new Puntos2(4, 4);
+        Puntos2 c = new Puntos2(1, 4);
+        Puntos2 d = new Puntos2(4, 1);
 
-        List<Puntos> intersecciones = Puntos.inters(a, b, c, d);
+        List<Puntos2> intersecciones = Puntos2.inters(a, b, c, d);
         System.out.println("Interseccion:");
-        for (Puntos p : intersecciones) {
+        for (Puntos2 p : intersecciones) {
             System.out.println(p.x + " " + p.y);
         }
     }
