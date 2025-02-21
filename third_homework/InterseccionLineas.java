@@ -66,7 +66,7 @@ public class InterseccionLineas {
         Puntos d = new Puntos(4, 1);
 
         List<Puntos> intersecciones = Puntos.inters(a, b, c, d);
-        System.out.println("Puntos de intersección:");
+        System.out.println("Interseccion:");
         for (Puntos p : intersecciones) {
             System.out.println(p.x + " " + p.y);
         }
