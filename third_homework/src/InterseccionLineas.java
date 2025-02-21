@@ -47,13 +47,31 @@ public class InterseccionLineas {
     public static void main(String[] args) {
         Puntos2 a = new Puntos2(1, 1);
         Puntos2 b = new Puntos2(4, 4);
-        Puntos2 c = new Puntos2(1, 4);
-        Puntos2 d = new Puntos2(4, 1);
+        Puntos2 c = new Puntos2(2, 2);
+        Puntos2 d = new Puntos2(3, 3);
 
         List<Puntos2> intersecciones = inters(a, b, c, d);
-        System.out.println("Interseccion:");
-        for (Puntos2 p : intersecciones) {
-            System.out.println(p.x + " " + p.y);
+        if(intersecciones.isEmpty()){
+            System.out.println("No hay interseccion");
+        }
+        else if(intersecciones.size() == 1){
+            System.out.println("Interseccion:");
+            for (Puntos2 p : intersecciones) {
+                System.out.println(p.x + " " + p.y);
+            }
+        }
+        else{
+            intersecciones.sort((p1, p2) -> {
+                if (p1.x == p2.x) return Double.compare(p1.y, p2.y);
+                return Double.compare(p1.x, p2.x);
+            });
+
+            Puntos2 pMin = intersecciones.get(0);
+            Puntos2 pMax = intersecciones.get(intersecciones.size() - 1);
+
+            System.out.println("Intervalo de interseccion:");
+            System.out.println(pMin.x + " " + pMin.y);
+            System.out.println(pMax.x + " " + pMax.y);
         }
     }
 }
